@@ -1,44 +1,32 @@
-group 'com.example.imagegallerysaver'
-version '1.0-SNAPSHOT'
+plugins {
+    id "com.android.library"
+    id "kotlin-android"
+}
 
-buildscript {
-    ext.kotlin_version = '1.7.10'
+allprojects {
     repositories {
         google()
         mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        gradlePluginPortal()
     }
 }
-
-rootProject.allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
+    compileSdkVersion 35
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
+        targetSdkVersion 33
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'
     }
+    namespace "com.example.imagegallerysaver"
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+// Enter flutter.jar local file in flutter sdk
+//     implementation files('/Users/oxyfalcon/flutter/bin/cache/artifacts/engine/android-arm64-release/flutter.jar')
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    implementation 'androidx.annotation:annotation-jvm:1.9.1'
 }
