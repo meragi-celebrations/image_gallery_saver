@@ -1,5 +1,5 @@
 plugins {
-    id "com.android.application"
+    id "com.android.library"
     id "kotlin-android"
 }
 
@@ -25,6 +25,8 @@ android {
 }
 
 dependencies {
-    implementation files('/Users/oxyfalcon/flutter/bin/cache/artifacts/engine/android-arm64-release/flutter.jar')
+// Enter flutter.jar local file in flutter sdk
+//     implementation files('/Users/oxyfalcon/flutter/bin/cache/artifacts/engine/android-arm64-release/flutter.jar')
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
     implementation 'androidx.annotation:annotation-jvm:1.9.1'
 }
